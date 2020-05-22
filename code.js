@@ -25,7 +25,11 @@ function onLoad(){
 
 //pulls prompt to chose difficulty
 function chooseDiff(){
-	diff = prompt("difficulty? ");
+	do{
+		diff = prompt("difficulty?(must be Integer. Default is 1) ");
+	}while(!isValid(diff))
+	if(diff == 0 || diff == null)
+		diff = 1;
 }
 
 //generates a random solution
@@ -203,6 +207,16 @@ function randomBin(){
 //return a random number from start to end 
 function randomNum(start, end){
 	return Math.floor(Math.random()*end)+ start;
+}
+
+//checks if the difficulty given is valid
+function isValid(d){
+	var validChars = "0123456789"
+	for(var i = 0; i<d.length; i++){
+		if(!validChars.includes(d[i],0))
+			return false;
+	}
+	return true;
 }
 
 
